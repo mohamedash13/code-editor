@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>code editor</title>
+</head>
+<body>
+<style>
+    h1{
+        color: aquamarine;
+    }
+</style>
+    <div class="container">
+        <div class="frame-container">
+            <label for="html">HTML</label>
+            <textarea id="html" class="frame"></textarea>
+            <label for="html">css</label>
+            <textarea id="css" class="frame"></textarea>
+            <label for="js">javascript</label>
+            <textarea id="js" class="frame"></textarea>
+        </div>
+        <div class="output-container">
+            <iframe class="output"></iframe>
+            <button>Run</button>
+        </div>
+    </div>
+    
+    <script >
+            let run = document.querySelector("button")
+        run.addEventListener("click",() =>{
+        let html = document.querySelector("#html").value;
+        let css = document.querySelector("#css").value;
+        let js = document.querySelector("#js").value;
+        let result = document.querySelector(".output");
+            result.contentDocument.body.innerHTML = html + "<style>"+css+"</style>"
+            result.contentWindow.eval(js)
+        })
+    </script>
+</body>
+</html>
